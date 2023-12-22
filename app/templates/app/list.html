@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    List
+{% endblock title %}
+   
+
+{% block content %}
+<a href="{% url 'create' %}" class="text-decoration-none">Create </a>    
+
+<h1>product List</h1>
+<br><br>
+    {% for product in list %}
+    <a class="text-decoration-none" href="{% url 'detail' product.pk %}">
+        <img src="{{product.image.url}}" alt="" width="100px">
+        <h1> {{product.title}} </h1>
+        <p> {{product.content|truncatechars:50}} </p>
+        <p>Price: {{product.price}} </p>
+        <i>Updated: {{product.updated}} </i>
+    </a>
+    <a href="{% url 'update' product.pk %}">Edit</a>
+    <a href="{% url 'delete' product.pk %}">Delete</a>
+    <hr>
+    {% endfor %}
+{% endblock content %}
+    

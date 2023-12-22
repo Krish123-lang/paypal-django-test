@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    {{product.title}}
+{% endblock title %}
+   
+
+{% block content %}
+<a href="{% url 'list' %}">Home</a>
+<br>
+
+<img src="{{product.image.url}}" alt="" width="500px">
+<h1> {{product.title}} </h1>
+<p> {{product.content}} </p>
+<p> {{product.price}} </p>
+<i> {{product.updated}} </i>
+
+{{paypal.render}}
+{% endblock content %}
